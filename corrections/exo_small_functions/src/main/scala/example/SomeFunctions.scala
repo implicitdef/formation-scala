@@ -1,6 +1,6 @@
 package example
 
-object Hello extends App {
+object SomeFunctions extends App {
 
   // TODO faire des unit tests de tous ces exos
   // TODO réorganiser, classifier, faire la version sans correction
@@ -8,32 +8,6 @@ object Hello extends App {
   // Write a program that prints ‘Hello World’ to the screen.
   def helloWorld(): Unit =
     println("Hello world")
-
-  // Write a function that computes the N-th fibonacci number
-  // The first two Fibonacci numbers are 1 and 1.
-  // The n+1-st Fibonacci number can be computed by adding the n-th and the n-1-th Fibonacci number.
-  // The first few are therefore 1, 1, 1+1=2, 1+2=3, 2+3=5, 3+5=8.
-  // - recursion
-  // - if statement
-  def fibonacci(n: Int): Int =
-    if (n == 0 || n == 1) 1
-    else fibonacci(n - 1) + fibonacci(n + 1)
-
-  // Write a function that returns true if the collection is sorted
-  // Do not use the existing sort methods, you have to compare
-  // the elements manually
-  def isSorted(seq: Seq[Int]): Boolean =
-    if (seq.size <= 1) true
-    else seq.head < seq(1) && isSorted(seq.drop(2))
-  def isSortedPatternMatching(seq: Seq[Int]): Boolean = seq match {
-    case a +: b +: rest =>
-      a < b && isSorted(rest)
-    case _ => true
-  }
-  def isSortedFoldLeft(seq: Seq[Int]): Boolean =
-    seq.sliding(2).foldLeft(true) { case (acc, current) =>
-      acc && current.head < current(1)
-    }
 
   // Write a program that prints a multiplication table for numbers up to 12.
   // - ranges
@@ -43,16 +17,43 @@ object Hello extends App {
     for {
       i <- 1 to 12
       j <- 1 to 12
-    }
-      println(s"$i x $j = ${i * j}")
-
+    } println(s"$i x $j = ${i * j}")
 
   // Write a program that prints the sum of the numbers 1 to n
   // - collections methods
   def sumOfNumbersToN(n: Int): Unit =
     println((1 to n).sum)
 
-  // Collections / strings
+  // Write a function that computes the N-th fibonacci number
+  // The first two Fibonacci numbers are 1 and 1.
+  // The n+1-st Fibonacci number can be computed by adding the n-th and the n-1-th Fibonacci number.
+  // The first few are therefore 1, 1, 1+1=2, 1+2=3, 2+3=5, 3+5=8.
+  // - recursion
+  // - if statement
+  def fibonacci(n: Int): Int =
+    if (n == 0 || n == 1) 1
+    else fibonacci(n - 1) + fibonacci(n - 2)
+
+  // Write a function that returns true if the collection is sorted
+  // /!\ Do not use the existing sort methods, you have to compare
+  // the elements manually
+
+  // - recursion
+  // - basic collection manipulation
+  def isSortedSimple(seq: Seq[Int]): Boolean =
+    if (seq.size <= 1) true
+    else seq.head <= seq(1) && isSortedSimple(seq.tail)
+  // - pattern matching
+  def isSortedPatternMatching(seq: Seq[Int]): Boolean = seq match {
+    case a +: b +: rest =>
+      a <= b && isSortedPatternMatching(b +: rest)
+    case _ => true
+  }
+  // - advanced collection methods
+  def isSortedFoldLeft(seq: Seq[Int]): Boolean =
+    seq.sliding(2).foldLeft(true) { case (acc, current) =>
+      acc && current.head <= current(1)
+    }
 
 
   // Write a function that tests whether a string is a palindrome.
@@ -92,7 +93,7 @@ object Hello extends App {
       .reverse
       .zipWithIndex.map { case (digit, idx) =>
       digit.toString.toInt * Math.pow(currentBase, idx)
-    }.sum.toString
+    }.sum.toInt.toString
 
 
   println(convertNumberToBase10("1011", 2))

@@ -14,6 +14,11 @@ object BinarySearchTree {
     right: Option[Node],
   )
 
+
+  // TODO fonction pour instancier un binary tree arbitraire (instancer les cases classes)
+  // TODO Multiplier un binary tree par deux (toutes les valeurs)
+  // TODO Instancier un tree dans une factory function pour construire un arbre entier
+
   // The next methods all assume the tree is ordered
 
   def isInTree(node: Node, value: Int): Boolean = {
