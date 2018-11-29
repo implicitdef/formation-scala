@@ -1,13 +1,34 @@
 package example
 
-object SomeFunctions extends App {
+object SomeFunctions {
 
-  // TODO faire des unit tests de tous ces exos
   // TODO réorganiser, classifier, faire la version sans correction
 
   // Write a program that prints ‘Hello World’ to the screen.
+  // - print to the console
   def helloWorld(): Unit =
     println("Hello world")
+
+  // Write a program that prints the number 1 to 100
+  // Except that if the number is a multiple of 3, prints "Fizz"
+  // If the number is a multiple of 5, prints "Buzz"
+  // If the number is both a multiple of 3 and 5, prints "FizzBuzz" instead
+  // Otherwise, just print the number itself
+  // - simple for comprehension
+  // - ranges
+  // - if else
+  // - val
+  def fizzbuzz(): Unit =
+    for (i <- 1 to 100) {
+      val multipleOf3 = i % 3 == 0
+      val multipleOf5 = i % 5 == 0
+      println {
+        if (multipleOf3 && multipleOf5) "FizzBuzz"
+        else if (multipleOf3) "Fizz"
+        else if (multipleOf5) "Buzz"
+        else i
+      }
+    }
 
   // Write a program that prints a multiplication table for numbers up to 12.
   // - ranges
@@ -23,6 +44,10 @@ object SomeFunctions extends App {
   // - collections methods
   def sumOfNumbersToN(n: Int): Unit =
     println((1 to n).sum)
+
+
+  // -------------------------------------
+  // All the methods below are unit-tested
 
   // Write a function that computes the N-th fibonacci number
   // The first two Fibonacci numbers are 1 and 1.
@@ -54,7 +79,6 @@ object SomeFunctions extends App {
     seq.sliding(2).foldLeft(true) { case (acc, current) =>
       acc && current.head <= current(1)
     }
-
 
   // Write a function that tests whether a string is a palindrome.
   // Should ignore all non-alphanumeric characters, and be case-insensitive
@@ -95,7 +119,5 @@ object SomeFunctions extends App {
       digit.toString.toInt * Math.pow(currentBase, idx)
     }.sum.toInt.toString
 
-
-  println(convertNumberToBase10("1011", 2))
 
 }
