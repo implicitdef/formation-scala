@@ -60,6 +60,38 @@ class BinarySearchTreeTest extends FreeSpec {
         assert(!BinarySearchTree.isInTree(tree, -10))
       }
     }
+
+    "insert" - {
+      "should do nothing if already there" in {
+        val tree = BinarySearchTree.buildSomeSpecificTree
+        assert(BinarySearchTree.insert(tree, 15) == tree)
+        assert(BinarySearchTree.insert(tree, 4) == tree)
+      }
+      "should insert 6" in {
+        val tree = BinarySearchTree.buildSomeSpecificTree
+        assert(BinarySearchTree.insert(tree, 6) == tree.copy(
+          left = tree.left.map { subNode =>
+            subNode.copy(
+              right = subNode.right.map { subSubNode =>
+                subSubNode.copy(
+                  right = Some(Node(6))
+                )
+              }
+            )
+          }
+        ))
+      }
+      "should insert 12" in {
+        val tree = BinarySearchTree.buildSomeSpecificTree
+        assert(BinarySearchTree.insert(tree, 12) == tree.copy(
+          right = tree.right.map { subNode =>
+            subNode.copy(
+              left = Some(Node(12))
+            )
+          }
+        ))
+      }
+    }
   }
 
 
