@@ -10,13 +10,11 @@ object BinarySearchTree {
 
   case class Node(
     value: Int,
-    left: Option[Node],
-    right: Option[Node],
+    left: Option[Node] = None,
+    right: Option[Node] = None,
   )
 
 
-  // TODO fonction pour instancier un binary tree arbitraire (instancer les cases classes)
-  // TODO Instancier un tree dans une factory function pour construire un arbre entier
   // TODO faire des unit tests de tous ces exos
   // TODO faire la function isSorted maybe
 
