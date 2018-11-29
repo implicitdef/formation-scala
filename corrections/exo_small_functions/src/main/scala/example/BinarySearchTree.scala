@@ -13,7 +13,7 @@ object BinarySearchTree {
     left: Option[Node] = None,
     right: Option[Node] = None,
   )
-  
+
 
   // This method should build the following tree :
   //     10
