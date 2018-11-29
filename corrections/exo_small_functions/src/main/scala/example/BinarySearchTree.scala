@@ -13,10 +13,7 @@ object BinarySearchTree {
     left: Option[Node] = None,
     right: Option[Node] = None,
   )
-
-
-  // TODO faire des unit tests de tous ces exos
-  // TODO faire la function isSorted maybe
+  
 
   // This method should build the following tree :
   //     10
@@ -83,10 +80,6 @@ object BinarySearchTree {
       }
     }
   }
-
-  // TODO be careful this seems a bit difficult, see wikipedia
-  def isSorted(): Boolean = ???
-
 
   def buildTreeRecursive(elements: Seq[Int]): Node = {
 

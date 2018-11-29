@@ -92,6 +92,19 @@ class BinarySearchTreeTest extends FreeSpec {
         ))
       }
     }
+
+    "buildTree" - {
+      "recursive" in {
+        val tree = BinarySearchTree.buildTreeRecursive(Seq(10, 4, 5, 15))
+        assert(tree == BinarySearchTree.buildSomeSpecificTree)
+      }
+      "foldLeft" in {
+        val tree = BinarySearchTree.buildTreeFoldLeft(Seq(10, 4, 5, 15))
+        assert(tree == BinarySearchTree.buildSomeSpecificTree)
+      }
+
+    }
+
   }
 
 
