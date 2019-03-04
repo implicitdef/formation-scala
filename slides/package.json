@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "reveal-md slides.md"
+    "start": "reveal-md slides.md --watch"
   },
   "dependencies": {
     "jquery": "^3.3.1",
