@@ -1,8 +1,10 @@
+# Scala
+
 ===
 
 # PRESENTATION
 
----
+----
 
 # MOI
 
@@ -14,11 +16,11 @@ emmanuel@implicitdef.com
 
 www.implicitdef.com
 
----
+----
 
 # VOUS ?
 
----
+----
 
 ### SCALA c'est quoi ?
 
@@ -28,25 +30,56 @@ Compile vers la JVM
 
 Multiparadigme : orienté objet et fonctionnel
 
----
+----
 
 ### Pour faire quoi ?
 
----
+- du backend :
+- webapps
+- webservices
+- site webs
+- batchs
+- traitement Big Data
+- etc.
+- éventuellement du front avec Scala.js
+
+- webapps
+- webservices
+- site webs
+- batchs
+- traitement Big Data
+- etc.
+
+----
 
 ### AVANTAGES
 
----
+- La JVM : tourne partout
+- Accès à l'écosystème Java
+- Performant
+- Typage très poussé, permet de détecter 99% des erreurs de code
+- fonctionnel
+- plein de features developer-friendly
+- pragmatique
+- a du succès en entreprise
+
+----
 
 ### INCONVENIENTS
 
----
+- Lourd (temps de compilation, IDE)
+- Complexe
+- Plusieurs manières d'écrire la même chose
+- Un iceberg : presque impossible de connaitre toutes les features
+- Culture de la complexité dans la communauté
+- Adoption limitée
+- Trouver des développeurs
 
 ===
 
 # PREMIERS PAS
 
----
+----
 
 ### REPL
 
@@ -62,11 +95,13 @@ Multiparadigme : orienté objet et fonctionnel
     
     scala>
 
----
+----
 
 ### scalafiddle.io
 
----
+<img src="scala/e9df0a63e77f7000d2677e28f94f263d.png"/>
+
+----
 
 ### Execution d'un Script .Scala
 
@@ -77,7 +112,7 @@ Multiparadigme : orienté objet et fonctionnel
     $ scala index.scala
     Hello
 
----
+----
 
 ### CRéER un PROJET SBT
 
@@ -106,7 +141,7 @@ Multiparadigme : orienté objet et fonctionnel
 
 La structure des fichiers est toujours la même :
 
----
+----
 
 ### ExEmples de Build.sbt
 
@@ -135,7 +170,7 @@ La structure des fichiers est toujours la même :
         libraryDependencies += "org.apache.derby" % "derby" % "10.4.1.3"
       )
 
----
+----
 
 ### COmmandes SBT
 
@@ -155,13 +190,11 @@ La structure des fichiers est toujours la même :
     
     > ~compile
 
----
-
 ===
 
 # STRUCTURE DES FICHIERS
 
----
+----
 
 ### TOp-level definitions
 
@@ -180,7 +213,7 @@ La structure des fichiers est toujours la même :
         (...)
     }
 
----
+----
 
 ### NOMMAGE des fichiers
 
@@ -195,7 +228,10 @@ La structure des fichiers est toujours la même :
 
 Libre, mais fortement recommandé :
 
----
+- un object ou class par fichier
+- [name of the object/class].scala
+
+----
 
 ### PACKAGING
 
@@ -212,7 +248,7 @@ Libre, mais fortement recommandé :
 
 Fortement recommandé : un dossier = un package
 
----
+----
 
 ### POINT D'ENTREE
 
@@ -230,13 +266,11 @@ Fortement recommandé : un dossier = un package
 
 Imite le public static void main de Java
 
----
-
 ===
 
 # VAL, VAR, DEF
 
----
+----
 
 ### var, val
 
@@ -252,7 +286,7 @@ Imite le public static void main de Java
     
     
 
----
+----
 
 ### def
 
@@ -281,7 +315,7 @@ Imite le public static void main de Java
     
     def sayHello7 = println("Hello world")
 
----
+----
 
 ### Appeler les méthodes
 
@@ -291,7 +325,7 @@ Imite le public static void main de Java
 
 Convention : mettre () quand il y a des side-effects
 
----
+----
 
 ### NOMMAGES AUTORISEs
 
@@ -309,13 +343,11 @@ Convention : mettre () quand il y a des side-effects
     val © = 1
     
 
----
-
 ===
 
 # IF, ELSE, WHILE, FOR
 
----
+----
 
 ### IF, ELSE
 
@@ -349,7 +381,7 @@ Convention : mettre () quand il y a des side-effects
             println("Goodbye world")
     }
 
----
+----
 
 ### IF/ELSE
 
@@ -359,7 +391,7 @@ if/else retourne toujours une valeur
 
 Pas besoin de l'opérateur ternaire en Scala !
 
----
+----
 
 ### WHILE, DO WHILE
 
@@ -375,7 +407,7 @@ Pas besoin de l'opérateur ternaire en Scala !
     }
     while(i < 10);
 
----
+----
 
 ### for
 
@@ -408,13 +440,11 @@ n'existe pas en Scala
 
 Le for de Scala permet d'itérer sur des collections
 
----
-
 ===
 
 # EVERYTHING IS AN EXPRESSION
 
----
+----
 
 ### RETURN
 
@@ -440,7 +470,7 @@ return est optionnel dans une fonction
 
 La dernière expression est toujours retournée
 
----
+----
 
 ### Points virgules
 
@@ -451,7 +481,7 @@ La dernière expression est toujours retournée
 
 ; peut être mis à la fin de chaque instruction, optionnellement
 
----
+----
 
 ### Parentheses et ACcolades
 
@@ -475,7 +505,7 @@ La dernière expression est toujours retournée
 
 Usage recommandé : () quand sur une seule ligne, {} quand on passe sur plusieurs lignes
 
----
+----
 
 ### EXPRESSIONS
 
@@ -485,7 +515,7 @@ a "statement" is just a standalone unit of execution and doesn't return anything
 
 En Scala, tout est une expression !
 
----
+----
 
 ### EXPRESSIONS
 
@@ -512,13 +542,11 @@ En Scala, tout est une expression !
         start + " " + end
     }
 
----
-
 ===
 
 # LAzy VAL
 
----
+----
 
 ### VAL vs DEF
 
@@ -533,7 +561,7 @@ En Scala, tout est une expression !
 
 Finalement, quelle différence entre une val et une def sans paramètres ?
 
----
+----
 
 ### VAL vs DEF
 
@@ -567,7 +595,7 @@ val est évaluée une fois quand elle est instanciée
 
 def est réevaluée à chaque fois
 
----
+----
 
 ### Lazy Val
 
@@ -591,13 +619,11 @@ def est réevaluée à chaque fois
 
 lazy val est évaluée uniquement la première fois qu'elle est appelée
 
----
-
 ===
 
 # Méthodes ou opérateurs ?
 
----
+----
 
 ### Opérateurs
 
@@ -615,7 +641,9 @@ Il n'y a pas d'opérateurs à proprement parler en Scala
 
 Ce sont des méthodes définies sur les types
 
----
+<img src="scala/05f69040f7a40c2a186a796139f3dbc3.png"/>
+
+----
 
 ### INFIX Notation
 
@@ -639,7 +667,7 @@ Peut s'écrire
 
     a method b
 
----
+----
 
 ### Précédences des "Opérateurs"
 
@@ -660,7 +688,7 @@ La précédence en Scala est décidée par le premier caractère de chaque méth
 
     a + b * c
 
----
+----
 
 ### Unary functions
 
@@ -670,11 +698,14 @@ Revient à écrire
 
     !myBoolean
 
----
+----
 
 ### Right ASSOCIATIVITY
 
 Si une méthode est utilisée dans la notation affixe a method b :
+
+- la méthode est invoquée sur l'expression de gauche : a.method(b)
+- sauf si le nom de la méthode termine avec :, auquel cas ce sera b.method(a)
 
     1 :: myList
     // revient à appeler
@@ -683,13 +714,11 @@ Si une méthode est utilisée dans la notation affixe a method b :
     // Usage typique
     1 :: 2 :: 3 :: Nil
 
----
-
 ===
 
 # Typage ET INFérence
 
----
+----
 
 ### INFéRENCE de Types
 
@@ -707,7 +736,7 @@ Toute variable a un type
 
 Mais peut être très souvent inféré par le compilateur
 
----
+----
 
 ### INFéRENCE de Types
 
@@ -721,13 +750,11 @@ Même chose pour les fonctions
 
 Dans la pratique : où mettre les types ? où les omettre ?
 
----
-
 ===
 
 # IMPORTS
 
----
+----
 
 ### IMPORTS : Syntaxes
 
@@ -753,7 +780,7 @@ Dans la pratique : où mettre les types ? où les omettre ?
 
 Quelle syntaxe utiliser ?
 
----
+----
 
 ### Imports Local
 
@@ -765,13 +792,11 @@ Quelle syntaxe utiliser ?
 
 Un import n'est pas forcément au début du fichier
 
----
-
 ===
 
 # Nester les déclarations
 
----
+----
 
 ### val dans une def
 
@@ -781,7 +806,7 @@ Un import n'est pas forcément au début du fichier
         println(start + " " + world)
     }
 
----
+----
 
 ### DEF dans une def
 
@@ -795,7 +820,7 @@ Un import n'est pas forcément au début du fichier
     
     }
 
----
+----
 
 ### CLASS dans un object/class
 
@@ -819,7 +844,7 @@ Un import n'est pas forcément au début du fichier
     
     }
 
----
+----
 
 ### CLASS DANS UNE DEF
 
@@ -834,19 +859,21 @@ Un import n'est pas forcément au début du fichier
 
 et ainsi de suite...
 
----
+----
 
 ### BONNES PRATIQUES
 
 Lisibilité avant tout !
 
----
+- val OK partout
+- def dans des def parfois, avec parcimonie
+- object OK pour mettre n'importe quoi dedans (sert de namespace)
 
 ===
 
 # HIGHER ORDER FUNCTIONS
 
----
+----
 
 ### HIGHER ORDER QUOI ?
 
@@ -872,7 +899,7 @@ higher-order function = Une fonction qui prend en paramètre (ou retourne) une f
     
     sayHello("Lulu", s => s.toLowerCase) // hello lulu
 
----
+----
 
 ### Types des fonctions
 
@@ -886,7 +913,7 @@ higher-order function = Une fonction qui prend en paramètre (ou retourne) une f
     
     // etc.
 
----
+----
 
 ### Declarer une fonction anonyme
 
@@ -902,7 +929,7 @@ higher-order function = Une fonction qui prend en paramètre (ou retourne) une f
     
     name => name.toUpperCase
 
----
+----
 
 ### LA STOCKER
 
@@ -916,7 +943,7 @@ higher-order function = Une fonction qui prend en paramètre (ou retourne) une f
 
 Revient (presque !) à écrire une def
 
----
+----
 
 ### Une SYNTAXE ENCORE PLUS COURTE ?
 
@@ -930,13 +957,11 @@ Revient (presque !) à écrire une def
     someSortingFunction(Seq("Max", "Phil", "Jo"), (a, b) => a.length < b.length)
     someSortingFunction(Seq("Max", "Phil", "Jo"), _.length < _.length)
 
----
-
 ===
 
 # METHOD ARGUMENTS
 
----
+----
 
 ### VALEURS PAR DEFAUT
 
@@ -959,7 +984,7 @@ Syntaxe complète :
 
 [nom]: [type] = [valeur par défaut] 
 
----
+----
 
 ### NAMED PARAMETERS
 
@@ -981,7 +1006,7 @@ Bonne pratique : à utiliser quand beaucoup de types similaires, et toujours pou
 
     doRequest("www.example.com", useSsl = true)
 
----
+----
 
 ### CALL-BY-NAME vs CALL-BY-VALUE
 
@@ -1014,35 +1039,50 @@ Bonne pratique : à utiliser quand beaucoup de types similaires, et toujours pou
     // x2=1
     
 
----
-
 ===
 
 # Types (les bases)
 
----
+----
 
 ### Types "Primitifs"
+
+- String
+- Char
+- Boolean
+- Int
+- Double
+- Float
+- Long
+- Short
+- Byte
 
 En Scala ce sont des types comme les autres !
 
 Sauf que le compilateur les optimise pour cibler les primitives Java
 
----
+----
 
 ### Hierarchie des types
 
----
+<img src="scala/39a09f805bf7696b0b9303275c2d3b7e.png"/>
+
+----
 
 ### Hierarchie des types
 
----
+- ​Any au-dessus de tout
+- AnyVal pour les types "primitifs"
+- AnyRef pour les classes/objects
+- Unit pour les méthodes qui ne retournent rien
+- Null est le type de la valeur null
+- Nothing pour les méthodes qui ne retournent pas
 
 ===
 
 # CLASSES
 
----
+----
 
 ### DEFINITION et usage
 
@@ -1063,7 +1103,7 @@ Sauf que le compilateur les optimise pour cibler les primitives Java
     foo.method1()
     foo.method2()
 
----
+----
 
 ### LE CORPS DE LA CLASSE EST éVALUé QUand instancié
 
@@ -1086,7 +1126,7 @@ Sauf que le compilateur les optimise pour cibler les primitives Java
     val foo2 = new Foo
     // This is evaluated every time you instantiate the class
 
----
+----
 
 ### CONSTRUCTEUR
 
@@ -1102,7 +1142,7 @@ Sauf que le compilateur les optimise pour cibler les primitives Java
     
     new Foo("Charles")
 
----
+----
 
 ### CONSTRUCTEUR AVEC VAL
 
@@ -1123,7 +1163,7 @@ Sauf que le compilateur les optimise pour cibler les primitives Java
         val name = _name    
     }
 
----
+----
 
 ### AUXILARY CONSTRUCTORS
 
@@ -1141,7 +1181,7 @@ Un auxiliary constructor doit toujours appeler le primary constructor : le poin
 
 Peu utilisé puisqu'on a les valeurs par défaut et les named parameters, et les factory functions dans le companion object
 
----
+----
 
 ### Visibilité
 
@@ -1165,13 +1205,11 @@ Peu utilisé puisqu'on a les valeurs par défaut et les named parameters, et les
     
     }
 
----
-
 ===
 
 # OBJECTS
 
----
+----
 
 ### KEZAKO ?
 
@@ -1197,7 +1235,7 @@ Une seule instance, automatique
 
 Pas possible de l'instancier (pas de new)
 
----
+----
 
 ### Usage
 
@@ -1224,7 +1262,7 @@ Pas possible de l'instancier (pas de new)
 
 organiser le code
 
----
+----
 
 ### Usage
 
@@ -1240,7 +1278,7 @@ organiser le code
 
 représenter une valeur unique
 
----
+----
 
     class Foo {
     
@@ -1254,11 +1292,16 @@ représenter une valeur unique
     
     }
 
+- même nom
+- même fichier
+- accès aux champs private de la classe
+- utilisé généralement pour définir des méthodes liées à la classe : factory methods
+
 companions objects
 
 ### USAGE
 
----
+----
 
 ### USAGE
 
@@ -1285,13 +1328,11 @@ companions objects
 
 package objects
 
----
-
 ===
 
 # Héritage
 
----
+----
 
 ### Classes Abstraites
 
@@ -1330,7 +1371,7 @@ package objects
     
     
 
----
+----
 
 ### Trait
 
@@ -1365,7 +1406,7 @@ package objects
     
     
 
----
+----
 
 ### Heriter plusieurs CHOSES A LA FOIS
 
@@ -1381,11 +1422,14 @@ package objects
 
 Comment le diamond problem est-il géré ?
 
----
+----
 
 ### Trait vs Classes abstraites
 
----
+- Une classe peut étendre une seule classe abstraite, mais plusieurs traits
+- Seule une classe abstraite peut avoir des paramètres de constructeur
+
+----
 
 ### Jouer avec le NEW
 
@@ -1415,7 +1459,7 @@ Comment le diamond problem est-il géré ?
     
     // etc.
 
----
+----
 
 ### Inheritance ou COMposition ?
 
@@ -1446,13 +1490,11 @@ Comment le diamond problem est-il géré ?
 
 Soit deux classes A et B qui ont besoin de partager du code dans C
 
----
-
 ===
 
 # CASE CLASSES
 
----
+----
 
 ### DEFINITION
 
@@ -1460,7 +1502,7 @@ Soit deux classes A et B qui ont besoin de partager du code dans C
         ...
     }
 
----
+----
 
 ### CARACTERISTIQUES
 
@@ -1472,7 +1514,7 @@ pas besoin du new pour les instancier
 
 Fonctionne en définissant la méthode apply sur le companion object
 
----
+----
 
 ### CARACTERISTIQUES
 
@@ -1484,7 +1526,7 @@ Fonctionne en définissant la méthode apply sur le companion object
 
 les paramètres deviennent public par défaut, comme s'ils étaient définis avec val
 
----
+----
 
 ### CARACTERISTIQUES
 
@@ -1499,7 +1541,7 @@ les paramètres deviennent public par défaut, comme s'ils étaient définis ave
 
 Implémente automatiquement les méthodes equals, hashCode, toString basées sur les paramètres 
 
----
+----
 
 ### CARACTERISTIQUES
 
@@ -1514,13 +1556,13 @@ Implémente automatiquement les méthodes equals, hashCode, toString basées sur
 
 Ajoute une méthode copy
 
----
+----
 
 ### CARACTERISTIQUES
 
 Implémente une méthode unapply sur le companion object : permet de faire du pattern matching dessus et de les déstructurer facilement
 
----
+----
 
 ### case object
 
@@ -1528,13 +1570,11 @@ Implémente une méthode unapply sur le companion object : permet de faire du p
 
 Principaux avantages : toString et pattern matching facilité
 
----
-
 ===
 
 # SELF TYPES
 
----
+----
 
 ### DEFINITION
 
@@ -1561,13 +1601,11 @@ Principaux avantages : toString et pattern matching facilité
         val name = ...
     }
 
----
-
 ===
 
 # "ENUMS"
 
----
+----
 
 ### ENUMERATION
 
@@ -1584,7 +1622,7 @@ Principaux avantages : toString et pattern matching facilité
 
 Première approche : Enumeration
 
----
+----
 
 ### SEALED TRAIT
 
@@ -1595,9 +1633,13 @@ Première approche : Enumeration
     case object East extends Direction
     case object South extends Direction
 
+- Pas de conversion à partir de String automatique
+- Pas de liste ordonnée des valeurs automatique
+- Mais beaucoup, beaucoup plus souple...
+
 Seconde approche : Sealed trait et case object
 
----
+----
 
 ### SEALED TRAIT
 
@@ -1613,7 +1655,7 @@ Seconde approche : Sealed trait et case object
     def directionFromName(n: String) =
         allDirections.find(_.name == n)
 
----
+----
 
 ### SEALED TRAIT
 
@@ -1630,13 +1672,11 @@ Seconde approche : Sealed trait et case object
     
     
 
----
-
 ===
 
 # ENCORE QUELQUES FEATURES SYMPA
 
----
+----
 
 ### XML Literal
 
@@ -1650,7 +1690,7 @@ Seconde approche : Sealed trait et case object
         <taz/>
     </foo>
 
----
+----
 
 ### String INTERPOLATION
 
@@ -1669,7 +1709,7 @@ Seconde approche : Sealed trait et case object
     
     // on peut implémenter son propre interpolator !
 
----
+----
 
 ### MULTILINE STRINGS
 
@@ -1690,7 +1730,7 @@ Seconde approche : Sealed trait et case object
     // not anymore !
     val endsWithDotCom = """\.com$""".r
 
----
+----
 
 ### RECURSION ET TAIL-RECURSION
 
@@ -1711,13 +1751,11 @@ Seconde approche : Sealed trait et case object
       inner(seq, 0)
     }
 
----
-
 ===
 
 # Apply()
 
----
+----
 
 ### APPLY()
 
@@ -1734,7 +1772,7 @@ Seconde approche : Sealed trait et case object
 
 Utilisé très souvent dans companion objects pour définir des factories functions
 
----
+----
 
 ### Les fonctions sont des classes comme les autres
 
@@ -1756,7 +1794,7 @@ Utilisé très souvent dans companion objects pour définir des factories func
     
     
 
----
+----
 
 ### UPDATE()
 
@@ -1775,13 +1813,11 @@ Utilisé dans la librairie standard pour des collections mutables
 
 (Map, etc.) 
 
----
-
 ===
 
 # TUPLES
 
----
+----
 
 ### KEZAKO ?
 
@@ -1806,7 +1842,7 @@ Pas une case classe : les valeurs ne sont pas nommées
 
 Pas une collection : le nombre de valeurs et le type de chacune est enforcé
 
----
+----
 
 ### Accès aux valeurs
 
@@ -1823,7 +1859,7 @@ Pas une collection : le nombre de valeurs et le type de chacune est enforcé
     println(myString) = // Foo
     
 
----
+----
 
 ### Arrow Syntax
 
@@ -1835,17 +1871,18 @@ Pas une collection : le nombre de valeurs et le type de chacune est enforcé
     val foo = "Max" -> 33
     
 
----
+----
 
 ### USAGE
 
----
+- Retourner plusieurs valeurs d'une fonction
+- Partout où on pourrait utiliser une case classe mais ça n'en valait pas la peine et on ne va pas la réutiliser
 
 ===
 
 # PATTERN MATCHING
 
----
+----
 
 ### KEZAKO ?
 
@@ -1853,7 +1890,10 @@ Un switch boosté aux hormones
 
 D'une pierre deux coups :
 
----
+- tester des conditions
+- déstructurer les valeurs
+
+----
 
 ### EXEMPLES
 
@@ -1872,7 +1912,7 @@ D'une pierre deux coups :
     
     
 
----
+----
 
 ### EXEMPLES
 
@@ -1899,7 +1939,7 @@ D'une pierre deux coups :
 
 Attention à la majuscule !
 
----
+----
 
 ### EXEMPLES
 
@@ -1921,7 +1961,7 @@ Attention à la majuscule !
     
     
 
----
+----
 
 ### EXEMPLES
 
@@ -1951,7 +1991,7 @@ Attention à la majuscule !
     
     
 
----
+----
 
 ### EXEMPLES
 
@@ -1976,7 +2016,7 @@ Attention à la majuscule !
     
     
 
----
+----
 
 ### EXEMPLES
 
@@ -1998,7 +2038,7 @@ Attention à la majuscule !
     
     
 
----
+----
 
 ### Nestable à l'INFINI
 
@@ -2014,7 +2054,7 @@ Attention à la majuscule !
     
     
 
----
+----
 
 ### Pourquoi certains types peuvent être Déstructurés ?
 
@@ -2034,7 +2074,7 @@ Ils implémentent tous un extractor : la méthode unapply() dans leur companion
 
 On peut donc définir des extractors customs sur nos types !
 
----
+----
 
 ### Regexp
 
@@ -2050,13 +2090,11 @@ Les Regex ont un extractor très pratique pour tester et récupérer les groupes
     }
     
 
----
-
 ===
 
 # Partial functions
 
----
+----
 
 ### KEZAKO ?
 
@@ -2091,22 +2129,24 @@ A un literal dédié
     // et jette une exception si ça ne passe pas
     divide42(0) // KO scala.MatchError: 0 (of class java.lang.Integer)
 
----
+----
 
 ### Pourquoi Faire ?
+
+- match keyword
+- catch keyword
+- n'importe quelle autre fonction qui demande une PartialFunction en paramètre
 
     val result = Seq("Jean-Philippe", "Marie", "Yann").collect { case name if name.length < 6 =>
       name.head
     }
     println(result) // Seq(M, Y)
 
----
-
 ===
 
 # EXceptions
 
----
+----
 
 ### Exceptions
 
@@ -2131,17 +2171,20 @@ A un literal dédié
     } 
     
 
----
+----
 
 ### Exceptions
 
----
+- Se base sur le fonctionnement des exceptions Java
+- Pas de checked exceptions
+- On peut jeter n'importe quelles sous-classes de Exception : celles existantes dans le JDK ou les notres
+- Toujours utiliser l'extracteur NonFatal() si on veut traiter toutes les exceptions
 
 ===
 
 # Listes de paramètres multiples
 
----
+----
 
 ### KEZAKO
 
@@ -2161,7 +2204,7 @@ A un literal dédié
     // usage
     sayMessage2("Max", true)("Hello") // HELLO MAX
 
----
+----
 
 ### CURRYING
 
@@ -2175,7 +2218,7 @@ A un literal dédié
     
     saySomethingToMaxInUppercase("Hello") // HELLO MAX
 
----
+----
 
 ### PARTIALLY APPLIED FUNCTIONS
 
@@ -2189,13 +2232,11 @@ A un literal dédié
     
     sayHelloInUppercase("Max") // HELLO MAX
 
----
-
 ===
 
 # TYPES GENERIQUES
 
----
+----
 
 ### CLASSES GENERIQUES
 
@@ -2220,14 +2261,14 @@ A un literal dédié
     // ou au subclassage
     class IntStack extends Stack[Int]
 
----
+----
 
 ### Methodes GENERIQUES
 
     def firstElementOfSeq[A](seq: Seq[A]): A =
         seq.head
 
----
+----
 
 ### CONTRAINTES DE TYPES
 
@@ -2244,7 +2285,7 @@ A un literal dédié
     // A doit être un sous-type B
     class Stack[A <: B, B] { ... }
 
----
+----
 
 ### Encore plus de CONTRAINTES...
 
@@ -2258,13 +2299,11 @@ A un literal dédié
     
     [-A]
 
----
-
 ===
 
 # IMPLICITS
 
----
+----
 
 ### PARAMètres implicites
 
@@ -2286,7 +2325,12 @@ A un literal dédié
 
 Conditions :
 
----
+- doit être dans le scope (déclaré, passé en paramètre, ou importé)
+- doit être marquée implicit
+- doit avoir le bon type
+- ne doit pas avoir d'ambiguité
+
+----
 
 ### Conversions IMPLICITES
 
@@ -2310,7 +2354,7 @@ Conditions :
     val newAmount = payment2Int(payment) + 100
     
 
----
+----
 
 ### Classes IMPLICITES
 
@@ -2337,13 +2381,11 @@ Conditions :
     
     
 
----
-
 ===
 
 # COLLECTIONS
 
----
+----
 
 ### MUTABLES vs IMMUTABLES
 
@@ -2368,13 +2410,25 @@ Conditions :
     println(myMap) // Map(Foo -> 33, Zoo -> 33, Bar -> 50)
     
 
----
+----
 
----
+<img src="scala/3374445c0d7605ebba5d1df9f73ed6f8.png"/>
+
+----
 
 ### A RETENIR
 
----
+- Traversable
+- Iterable
+- Seq
+- Vector
+- List
+- Map
+- Set
+- Array
+- Range
+
+----
 
 ### Usage
 
@@ -2406,7 +2460,7 @@ Conditions :
     
     
 
----
+----
 
 ### PLUS de Méthodes
 
@@ -2439,7 +2493,7 @@ Conditions :
     names.zipWithIndex // Seq((Max,0), (George,2), (Fred,3))
     
 
----
+----
 
 ### EnCORE UN PEU PLUS
 
@@ -2455,7 +2509,13 @@ Conditions :
     
     
 
----
+- .reduce() pour cumuler un résultat
+- .fold() pour cumuler un résultat avec une valeur initiale
+- .scan() pour cumuler tous les résultats intermédiaires avec une valeur initiale
+- Ces trois méthodes ne garantissent pas l'ordre
+- Utiliser leurs variantes .xxxLeft() ou .xxxRight() pour être sûr de l'ordre
+
+----
 
 ### MAP
 
@@ -2476,7 +2536,7 @@ Conditions :
     
     
 
----
+----
 
 ### For, MAP et FLATMAP
 
@@ -2496,13 +2556,11 @@ Conditions :
         }
       }.size
 
----
-
 ===
 
 # "COLLECTIONS-Like"
 
----
+----
 
 ### Option
 
@@ -2529,7 +2587,7 @@ Conditions :
     
     Seq("Phil", "Max", "", "Fred", "").flatMap(_.headOption) // Seq(P,M,F)
 
----
+----
 
 ### TRY
 
@@ -2557,7 +2615,7 @@ Conditions :
     }
     
 
----
+----
 
 ### FUTURE
 
@@ -2585,17 +2643,20 @@ Conditions :
         ...
     }
 
----
-
 ===
 
 # L'ECOSYSTèME
 
----
+----
 
 ### Principales Librairies/FRamework/OUtils
 
----
-
-===
-
+- Play
+- Spark
+- Akka
+- specs2
+- ScalaTest
+- Scala.js
+- scalaz
+- jodatime
+- toutes les librairies Java
