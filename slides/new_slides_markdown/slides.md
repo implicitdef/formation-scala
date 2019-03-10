@@ -90,17 +90,12 @@ Multiparadigme : orienté objet et fonctionnel
 
 ---
 
-### scalafiddle.io
-
-<img src="scala/e9df0a63e77f7000d2677e28f94f263d.png"/>
-
----
-
 ### Execution d'un Script .Scala
 
     // dans index.scala
-
     println("Hello world")
+
+puis
 
     $ scala index.scala
     Hello
@@ -117,21 +112,23 @@ Multiparadigme : orienté objet et fonctionnel
 
     Template applied in ./hello-world
 
+---
+
+### Structure typique des dossiers
+
     hello-world
-    ├── build.sbt                 // configuration du build sbt
-    ├── project                   // fichiers additionnels utilisés par sbt
+    ├── build.sbt
+    ├── project
     └── src
         ├── main
-        |   └── resources         // fichiers à inclure dans le JAR final
-        │   └── scala             // code Scala de l'application
+        |   └── resources
+        │   └── scala
         │       └── example
         │           └── Hello.scala
         └── test
-            └── resources         // fichiers à inclure dans le JAR de test
-            └── scala             // code Scala de test
-    └── target                    // auto-généré, contient les fichiers compilés
-
-La structure des fichiers est toujours la même :
+            └── resources
+            └── scala
+    └── target
 
 ---
 
@@ -146,9 +143,8 @@ La structure des fichiers est toujours la même :
 
     libraryDependencies += "org.apache.derby" % "derby" % "10.4.1.3"
 
+Ou aussi
 
-
-    // ou aussi
     import Dependencies._
 
     lazy val root = (project in file(".")).
@@ -619,7 +615,7 @@ Il n'y a pas d'opérateurs à proprement parler en Scala
 
 Ce sont des méthodes définies sur les types
 
-<img src="scala/05f69040f7a40c2a186a796139f3dbc3.png"/>
+<img src="imgs/05f69040f7a40c2a186a796139f3dbc3.png"/>
 
 ---
 
@@ -680,17 +676,17 @@ Revient à écrire
 
 ### Right ASSOCIATIVITY
 
-Si une méthode est utilisée dans la notation affixe a method b :
+    1 :: myList
+    // revient à appeler
+    myList.::(1)
 
-- la méthode est invoquée sur l'expression de gauche : a.method(b)
-- sauf si le nom de la méthode termine avec :, auquel cas ce sera b.method(a)
+    // usage typique
+    1 :: 2 :: 3 :: Nil
 
-  1 :: myList
-  // revient à appeler
-  myList.::(1)
+Si une méthode est utilisée dans la notation affixe **a method b** :
 
-  // Usage typique
-  1 :: 2 :: 3 :: Nil
+- la méthode est invoquée sur l'expression de gauche : **a.method(b)**
+- sauf si le nom de la méthode termine avec :, auquel cas ce sera **b.method(a)**
 
 ===
 
@@ -840,9 +836,9 @@ et ainsi de suite...
 
 Lisibilité avant tout !
 
-- val OK partout
-- def dans des def parfois, avec parcimonie
-- object OK pour mettre n'importe quoi dedans (sert de namespace)
+- **val** OK partout
+- **def** dans des **def** parfois, avec parcimonie
+- **object** OK pour mettre n'importe quoi dedans (sert de namespace)
 
 ===
 
@@ -912,11 +908,11 @@ higher-order function = Une fonction qui prend en paramètre (ou retourne) une f
         name.toUpperCase
     }
 
+Revient (presque !) à écrire une def
+
     def makeUpperCase(name: String) = {
         name.toUpperCase
     }
-
-Revient (presque !) à écrire une def
 
 ---
 
@@ -1039,7 +1035,7 @@ Sauf que le compilateur les optimise pour cibler les primitives Java
 
 ### Hierarchie des types
 
-<img src="scala/39a09f805bf7696b0b9303275c2d3b7e.png"/>
+<img src="imgs/39a09f805bf7696b0b9303275c2d3b7e.png"/>
 
 ---
 
@@ -1210,7 +1206,7 @@ Pas possible de l'instancier (pas de new)
 
 ---
 
-### Usage
+### Usage #1 : organiser le code
 
     object Configuration {
 
@@ -1233,11 +1229,9 @@ Pas possible de l'instancier (pas de new)
 
     }
 
-organiser le code
-
 ---
 
-### Usage
+### Usage #2 : représenter une valeur unique
 
     object Directions {
 
@@ -1249,9 +1243,9 @@ organiser le code
 
     }
 
-représenter une valeur unique
-
 ---
+
+### Usage #3 : companion objects
 
     class Foo {
 
@@ -1270,13 +1264,9 @@ représenter une valeur unique
 - accès aux champs private de la classe
 - utilisé généralement pour définir des méthodes liées à la classe : factory methods
 
-companions objects
-
-### USAGE
-
 ---
 
-### USAGE
+### USAGE #4 : package objects
 
     // dans src/main/scala/com/example/mypackage
     package com.example
@@ -1295,8 +1285,6 @@ companions objects
         def something = ...
 
     }
-
-package objects
 
 ===
 
@@ -1470,11 +1458,11 @@ Soit deux classes A et B qui ont besoin de partager du code dans C
 
 ### CARACTERISTIQUES
 
+Pas besoin du new pour les instancier
+
     case class Foo(name: String, score: Int)
 
     val foo = Foo("Max", 50)
-
-pas besoin du new pour les instancier
 
 Fonctionne en définissant la méthode apply sur le companion object
 
@@ -1482,17 +1470,19 @@ Fonctionne en définissant la méthode apply sur le companion object
 
 ### CARACTERISTIQUES
 
+Les paramètres deviennent public par défaut, comme s'ils étaient définis avec val
+
     case class Foo(name: String, score: Int)
 
     val foo = Foo("Max", 50)
 
     println(foo.name) // Max
 
-les paramètres deviennent public par défaut, comme s'ils étaient définis avec val
-
 ---
 
 ### CARACTERISTIQUES
+
+Implémente automatiquement les méthodes equals, hashCode, toString basées sur les paramètres
 
     case class Foo(name: String, score: Int)
 
@@ -1502,11 +1492,11 @@ les paramètres deviennent public par défaut, comme s'ils étaient définis ave
 
     println(Foo("Max", 40)) // Foo(Max,40)
 
-Implémente automatiquement les méthodes equals, hashCode, toString basées sur les paramètres
-
 ---
 
 ### CARACTERISTIQUES
+
+Ajoute une méthode copy
 
     case class Foo(name: String, score: Int)
 
@@ -1516,8 +1506,6 @@ Implémente automatiquement les méthodes equals, hashCode, toString basées sur
     println(foo.copy(name = "Fred")) // Foo(Fred,50)
     println(foo.copy(score = 900)) // Foo(Max,900)
     println(foo.copy(name = "Phil", score = 1)) // Foo(Phil,1)
-
-Ajoute une méthode copy
 
 ---
 
@@ -2339,7 +2327,7 @@ Conditions :
 
 ---
 
-<img src="scala/3374445c0d7605ebba5d1df9f73ed6f8.png"/>
+<img src="imgs/3374445c0d7605ebba5d1df9f73ed6f8.png"/>
 
 ---
 
