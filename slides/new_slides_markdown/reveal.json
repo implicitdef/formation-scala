@@ -1,3 +1,5 @@
 {
-  "progress": true
+  "progress": true,
+  "transition": "slide",
+  "transitionSpeed": "fast"
 }
