@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start": "reveal-md slides.md --watch",
-    "pdf": "reveal-md slides.md --print slides.pdf"
+    "pdf": "yarn createDist && reveal-md slides.md --print ./dist/slides.pdf",
+    "static": "yarn createDist && reveal-md slides.md --static ./dist/_site",
+    "createDist": "mkdir -p dist"
   },
   "dependencies": {
     "jquery": "^3.3.1",
